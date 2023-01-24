@@ -35,8 +35,9 @@ const App: () => Node = () => {
 
   const onButtonPress=()=> {
     codePush.sync({
-        updateDialog: true,
-        installMode: codePush.InstallMode.IMMEDIATE
+      installMode: codePush.InstallMode.IMMEDIATE,
+      checkFrequency: codePush.CheckFrequency.MANUAL,
+      updateDialog: false,
     });
 }
 
@@ -44,7 +45,7 @@ const App: () => Node = () => {
 
   const renderButton=()=>{
     return(
-      <TouchableOpacity  onPress={()=>onButtonPress()}style={{width:width-25,backgroundColor:'red',height:45,alignItems:'center',justifyContent:'center',marginTop:25,borderRadius:10}}>
+      <TouchableOpacity  onPress={()=>onButtonPress()}style={{width:width-25,backgroundColor:'green',height:45,alignItems:'center',justifyContent:'center',marginTop:25,borderRadius:10}}>
           <Text style={{color:'white'}}>Continue</Text>
        </TouchableOpacity>
     )
