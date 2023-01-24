@@ -19,22 +19,34 @@ import {
   View,
   Dimensions
 } from 'react-native';
+import codePush from "react-native-code-push";
+
+let codePushOptions = { checkFrequency: codePush.CheckFrequency.MANUAL };
+
 
 const {width,height} = Dimensions.get('window')
 
 
 
 const App: () => Node = () => {
+  
   const isDarkMode = useColorScheme() === 'dark';
+
+
+  const onButtonPress=()=> {
+    codePush.sync({
+        updateDialog: true,
+        installMode: codePush.InstallMode.IMMEDIATE
+    });
+}
 
   
 
   const renderButton=()=>{
     return(
-      <TouchableOpacity style={{width:width-25,backgroundColor:'blue',height:45,alignItems:'center',justifyContent:'center',marginTop:25,borderRadius:10}}>
+      <TouchableOpacity  onPress={()=>onButtonPress()}style={{width:width-25,backgroundColor:'blue',height:45,alignItems:'center',justifyContent:'center',marginTop:25,borderRadius:10}}>
           <Text style={{color:'white'}}>Continue</Text>
-          
-      </TouchableOpacity>
+       </TouchableOpacity>
     )
   }
 
@@ -43,8 +55,6 @@ const App: () => Node = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
          <Text>CodePush Demo</Text>
           {renderButton()}
-     
-
     </SafeAreaView>
   );
 };
@@ -68,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default codePush(codePushOptions)(App);
