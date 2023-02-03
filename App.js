@@ -45,7 +45,7 @@ const App: () => Node = () => {
 
   const renderButton=()=>{
     return(
-      <TouchableOpacity  onPress={()=>onButtonPress()}style={{width:width-25,backgroundColor:'green',height:45,alignItems:'center',justifyContent:'center',marginTop:25,borderRadius:10}}>
+      <TouchableOpacity  onPress={()=>onButtonPress()}style={{width:width-25,backgroundColor:'black',height:45,alignItems:'center',justifyContent:'center',marginTop:25,borderRadius:10}}>
           <Text style={{color:'white'}}>Continue</Text>
        </TouchableOpacity>
     )
@@ -55,6 +55,8 @@ const App: () => Node = () => {
     <SafeAreaView style={{flex:1,alignItems:'center',justifyContent:'center'}}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
          <Text>CodePush Demo</Text>
+          {renderButton()}
+          {renderButton()}
           {renderButton()}
     </SafeAreaView>
   );
